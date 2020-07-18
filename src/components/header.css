@@ -1,0 +1,27 @@
+.header{
+  display: flex;
+  height: 10vh;
+}
+
+.app_tittle{
+  font-size: 30px;
+  margin: 0px;
+}
+
+.header-login{
+  margin-left: auto;
+  
+}
+
+.greeding{
+  display: inline-block;
+  margin: 0px;
+  font-size: 15px;
+  padding: 0px;
+}
+
+.log-button{
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 20px;
+}
