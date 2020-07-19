@@ -63,7 +63,7 @@ class Header extends Component{
           <div className='greeding'>
             <Greeting isLoggedIn={isLoggedIn} />
           </div>
-          <div lassName='log-button'> 
+          <div className='log-button'> 
             {button}
           </div>
         </div>

@@ -23,13 +23,12 @@ class List extends Component{
     this.setState({todos: newTodos});
   }
 
-  handleUpdateTodoTitle=(id,title,date)=>{
+  handleUpdateTodoTitle=(id,title)=>{
     const newTodo = this.state.todos.map(todo =>{
       if (todo.id === id){
         return{
           ...todo,
           title,
-          date,
           editing:false
         };
       }
@@ -61,7 +60,7 @@ class List extends Component{
     });
     return(
       <ul className='todos'>
-        {filteredTodos.map(({id,title,date,completed, editing})=>(
+        {filteredTodos.map(({id,title,completed, editing})=>(
           <li key={id}>
             {editing ?(
             <EditTodo

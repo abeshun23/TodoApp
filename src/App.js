@@ -5,7 +5,6 @@ import Header from './components/Header';
 import CheckAll from './components/CheckAll';
 import Filter from "./components/Filter.js";
 import EditTodo from "./components/EditTodo.js";
-
 import './App.css';
 
 
@@ -146,7 +145,7 @@ class App extends Component{
                       id={id} 
                       title={title} 
                       completed={completed} 
-                      onChange={this.handleChangeCompleted}
+                      onChange={this.handleChangeTodoAttribute}
                       onDelete={this.handleClickDelete}
                     />
                     )}
