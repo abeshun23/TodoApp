@@ -18,10 +18,11 @@ class App extends Component{
     }
   }
 
-  addTodo=(title)=>{
+  addTodo=(title,todoDeadline)=>{
     const newTodo ={
       id:this.state.nextId + 1,
       title: title,
+      todoDeadline: todoDeadline,
       completed: false,
       editing: false,
     }
@@ -82,13 +83,14 @@ class App extends Component{
     this.setState({todos: newTodos});
   }
 
-  handleUpdateTodoTitle=(id,title)=>{
+  handleUpdateTodoTitle=(id,title,todoDeadline)=>{
     const newTodo = this.state.todos.map(todo =>{
       if (todo.id === id){
         return{
           ...todo,
           title,
-          editing:false
+          todoDeadline,
+          editing:false,
         };
       }
       return todo;
@@ -116,8 +118,7 @@ class App extends Component{
         <Header className='header'/>
         <div className='todos'>
           <div className='left'>
-            <h1>AddTodo</h1>
-            <AddTodo addTodo={this.addTodo}/>
+            <AddTodo addTodo={this.addTodo} className='add-todo'/>
           </div>
           <div className='right'>
             <div className='right-uppper'>
@@ -126,17 +127,19 @@ class App extends Component{
                 allCompleted={todos.length > 0 && todos.every(({completed}) => completed)} 
                 onChange={this.handleChangeAllCompleted}
               />
+              <button onClick={this.handleClickDeleteCompleted} className='all-delete-btn'>Delete All Completed Todos</button>
+              <br/>
               <Filter filter={filter} onChange={this.handleChangeFilter}/>
-              <button onClick={this.handleClickDeleteCompleted}>Delete All Completed Todos</button>
             </div>
             <div className='right-under'>
               <ul >
-                {filteredTodos.map(({id,title,completed, editing})=>(
+                {filteredTodos.map(({id,title,todoDeadline,completed, editing})=>(
                   <li key={id}>
                     {editing ?(
                     <EditTodo
                       id={id}
                       title={title}
+                      todoDeadline={todoDeadline}
                       onCancel={this.handleChangeTodoAttribute}
                       onUpdate={this.handleUpdateTodoTitle}
                     />
@@ -144,6 +147,7 @@ class App extends Component{
                     <Todo 
                       id={id} 
                       title={title} 
+                      todoDeadline={todoDeadline}
                       completed={completed} 
                       onChange={this.handleChangeTodoAttribute}
                       onDelete={this.handleClickDelete}

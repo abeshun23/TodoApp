@@ -1,11 +1,14 @@
 .app-all{
-  /* background-image: url('./img/sky.jpg'); */
+  background-image: url('./img/DSC_0186.JPG');
+  background-color: rgba(255, 255, 255, .8);
+  background-blend-mode: lighten;
   background-size: cover;
   height: 100%;
 }
 
 .header{
-  background-color: grey;
+ background-color: rgb(7, 7, 7);
+ color: white;
 }
 
 
@@ -16,19 +19,28 @@
 .left{
   width: 40%;
   height: 90vh;
-  display: inline-block;
-  background-color: skyblue;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  text-align: center;
+  background-blend-mode: lighten;
 }
+
 .right{
   width: 60%;
   height: 90vh;
   display: inline-block;
-  background-color: springgreen;
+  background-blend-mode: lighten;
 }
 
 .right-upper{
   height: 30vh;
 }
+
+.all-delete-btn{
+  margin-left: 15px;
+}
+
 
 .right-under{
   margin-top: 15px;
@@ -36,3 +48,7 @@
   overflow: auto;
 }
 
+ul{
+  list-style: none;
+  padding: 0px;
+}

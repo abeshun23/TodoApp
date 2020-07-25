@@ -4,12 +4,13 @@ class EditTodo extends Component{
   constructor(props){
     super(props);
     this.state={
-      title: props.title
+      title: props.title,
+      todoDeadline: props.todoDeadline
     };
   }
 
-  handleChange=event=>{
-    this.setState({title:event.currentTarget.value});
+  handleChange=(property,event)=>{
+    this.setState({[property]:event.target.value});
   };
   handleClickCancel=()=>{
     const {onCancel, id} = this.props;
@@ -18,18 +19,29 @@ class EditTodo extends Component{
 
   handleUpdate=()=>{
     const {onUpdate, id}=this.props;
-    if(!this.props.title) return;
-    onUpdate(id, this.state.title);
+    if(!this.props.title || !this.props.todoDeadline) return;
+    onUpdate(id, this.state.title, this.state.todoDeadline);
   };
 
   render(){
     return(
       <div>
-        <input
-          type='text'
-          value={this.state.title}
-          onChange={this.handleChange}
-        />
+        <labe for='todoInput'>Your Todo
+          <input
+            type='text'
+            value={this.state.title}
+            onChange={this.handleChange.bind(this,'title')}
+            id='todoInput'
+          />
+        </labe>
+        <labe for='todoDeadline'>Deadline
+          <input
+            type='text'
+            value={this.state.todoDeadline}
+            onChange={this.handleChange.bind(this,'todoDeadline')}
+            id='todoDeadline'
+          />
+        </labe>
         <button onClick={this.handleClickCancel}>Cancel</button>
         <button onClick={this.handleUpdate}>Update</button>
       </div>

@@ -35,15 +35,19 @@ class Header extends Component{
     super(props);
     this.handleLoginClick=this.handleLoginClick.bind(this);
     this.handleLogoutClick=this.handleLogoutClick.bind(this);
-    this.state={isLoggedIn: false};
+    this.state={isLoggedIn: false, isModalOpen: false};
   }
 
   handleLoginClick(){
-    this.setState({isLoggedIn: true});
+    this.setState({isLoggedIn: true,isModalOpen: true});
   }
 
   handleLogoutClick(){
     this.setState({isLoggedIn: false});
+  }
+
+  handleClickModalClose(){
+    this.setState({isModalOpen:false});
   }
 
   render(){
@@ -54,6 +58,22 @@ class Header extends Component{
     }else{
       button=<LoginButton onClick={this.handleLoginClick}/>
     }
+
+    let modal;
+    if(this.state.isModalOpen){
+      modal=(
+        <div className='loginModal'>
+          <label className='address-input'>Address:  
+            <input type='address' placeholder='aaaa@bbb' className='input'/>
+          </label>
+          <label className='password-input'>Password:  
+            <input type='password' placeholder='Please Your Password' className='input'/>
+          </label>
+          <button onClick={()=>{this.handleClickModalClose()}} className='login-btn'>Login</button>
+        </div>
+      )
+    }
+
     return(
       <div className='header'>
         <div className='header-tittle'>
@@ -66,6 +86,7 @@ class Header extends Component{
           <div className='log-button'> 
             {button}
           </div>
+          {modal}
         </div>
       </div>
     );

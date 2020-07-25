@@ -1,4 +1,5 @@
 import React, { Component }  from 'react';
+import './todo.css';
 
 
 class Todo extends Component{
@@ -18,14 +19,19 @@ class Todo extends Component{
   };
 
   render(){
-    const {title, completed} = this.props;
+    const {title, todoDeadline, completed} = this.props;
     return(
-      <div>
+      <div  className='todo-item'>
         <label>
-          <input type='checkbox' checked={completed} onChange={this.handlechangeCompleted}/>
-          {title}
-          <button onClick={this.handleClickEdit}>Edit</button>
-          <button onClick={this.handleClickDelete}>Delete</button>
+          <input type='checkbox' checked={completed} onChange={this.handlechangeCompleted} className='checkbox'/>
+          <div className='todo'>
+            <div className='title'>Title: {title}</div>
+            <div className='deadline'>Deadline: {todoDeadline}</div>
+          </div>
+          <div className='todo-btns'>
+            <button onClick={this.handleClickEdit}>Edit</button>
+            <button onClick={this.handleClickDelete}>Delete</button>
+          </div>
         </label>
       </div>
     );

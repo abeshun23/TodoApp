@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import EditTodo from './EditTodo';
 import Todo from './Todo';
+import './list.css';
 
 class List extends Component{
   constructor(props){
@@ -60,12 +61,13 @@ class List extends Component{
     });
     return(
       <ul className='todos'>
-        {filteredTodos.map(({id,title,completed, editing})=>(
+        {filteredTodos.map(({id,title,todoDeadline,completed, editing})=>(
           <li key={id}>
             {editing ?(
             <EditTodo
               id={id}
               title={title}
+              todoDeadline={todoDeadline}
               onCancel={this.handleChangeTodoAttribute}
               onUpdate={this.handleUpdateTodoTitle}
             />
@@ -73,6 +75,7 @@ class List extends Component{
             <Todo 
               id={id} 
               title={title} 
+              todoDeadline={todoDeadline}
               completed={completed} 
               onChange={this.handleChangeTodoAttribute}
               onDelete={this.handleClickDelete}
